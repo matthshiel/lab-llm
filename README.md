@@ -443,7 +443,63 @@ You must:
 1. Modify the code block below so that it contains the output of the command below
     ```
     $ qwen 'what is .bashrc?'
-    <add_your_programs_response_here>
+    <**.bashrc** (also known as **Bash Runtime Configuration**) is a hidden shell script file that is executed every time you start an **interactive non-login shell** in Bash.
+
+### Key Facts:
+
+1. **Purpose**:
+   - It customizes and configures your **Bash shell session** in a consistent way.
+   - It allows you to define **aliases**, **environment variables**, **shell functions**, **startup messages**, and other settings.
+
+2. **Location**:
+   - Stored in your home directory: `~/.bashrc` (e.g., `/home/username/.bashrc` on Linux or `/Users/username/.bashrc` on Mac).
+
+3. **When It Runs**:
+   - **Interactive non-login shells**: e.g., when you open a new terminal window in a desktop environment or run `bash` inside an existing shell.
+   - **Not** run for login shells (unless explicitly sourced; typically handled by `.bash_profile` or `.profile`).
+
+4. **Common Uses**:
+   - Defining aliases (e.g., `alias ll='ls -la'`).
+   - Setting environment variables (e.g., `PATH`, `EDITOR`).
+   - Configuring the prompt (`PS1`).
+   - Loading virtual environments, Java versions, or other tools.
+   - Displaying a welcome message.
+
+5. **Related Files**:
+   - `~/.bash_profile`: Executed for **login shells**. Often sources `.bashrc` to ensure both types of shells have the same settings.
+   - `~/.bashrc` is more commonly edited for day-to-day terminal customization.
+
+### Example `.bashrc` Content:
+```bash
+# Add custom PATH
+export PATH="$HOME/bin:$PATH"
+
+# Aliases
+alias ll='ls -la'
+alias grep='grep --color=auto'
+
+# Prompt customization
+export PS1="\u@\h:\w\$ "
+
+# Load additional config
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
+```
+
+### How to Edit:
+```bash
+nano ~/.bashrc
+# or
+vim ~/.bashrc
+```
+
+After editing, reload the file with:
+```bash
+source ~/.bashrc
+```
+
+In summary, **`.bashrc` is your personal script that automates and customizes your Bash terminal environment every time you start a new interactive session.**>
     ```
 
 1. Push your changes to github.
